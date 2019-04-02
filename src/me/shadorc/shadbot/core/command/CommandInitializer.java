@@ -46,7 +46,7 @@ import me.shadorc.shadbot.command.info.RolelistCmd;
 import me.shadorc.shadbot.command.info.ServerInfoCmd;
 import me.shadorc.shadbot.command.info.UserInfoCmd;
 import me.shadorc.shadbot.command.music.BackwardCmd;
-import me.shadorc.shadbot.command.music.BassBoostCmd;
+import me.shadorc.shadbot.command.music.BoostBassCmd;
 import me.shadorc.shadbot.command.music.ClearCmd;
 import me.shadorc.shadbot.command.music.ForwardCmd;
 import me.shadorc.shadbot.command.music.NameCmd;
@@ -99,7 +99,7 @@ public class CommandInitializer {
 				// Music Commands
 				new PlayCmd(), new PauseCmd(), new StopCmd(), new SkipCmd(), new RepeatCmd(),
 				new BackwardCmd(), new ForwardCmd(), new VolumeCmd(), new NameCmd(),
-				new PlaylistCmd(), new ShuffleCmd(), new ClearCmd(), new BassBoostCmd(),
+				new PlaylistCmd(), new ShuffleCmd(), new ClearCmd(), new BoostBassCmd(),
 				// Game Stats Commands
 				new FortniteCmd(), new DiabloCmd(), new CounterStrikeCmd(), new OverwatchCmd(),
 				// Info Commands

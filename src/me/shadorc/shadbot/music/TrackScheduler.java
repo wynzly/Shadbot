@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+import com.sedmelluq.discord.lavaplayer.filter.PcmFilterFactory;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 
@@ -25,10 +27,12 @@ public class TrackScheduler {
 
 	private RepeatMode repeatMode;
 	private AudioTrack currentTrack;
+	private AtomicBoolean isFilterApplied;
 
 	public TrackScheduler(AudioPlayer audioPlayer, int defaultVolume) {
 		this.audioPlayer = audioPlayer;
 		this.queue = new LinkedBlockingDeque<>();
+		this.isFilterApplied = new AtomicBoolean(false);
 		this.setRepeatMode(RepeatMode.NONE);
 		this.setVolume(defaultVolume);
 	}
@@ -112,6 +116,10 @@ public class TrackScheduler {
 		return this.repeatMode;
 	}
 
+	public boolean isFilterApplied() {
+		return this.isFilterApplied.get();
+	}
+
 	public boolean isPlaying() {
 		return this.audioPlayer.getPlayingTrack() != null;
 	}
@@ -126,5 +134,10 @@ public class TrackScheduler {
 
 	public void setRepeatMode(RepeatMode repeatMode) {
 		this.repeatMode = repeatMode;
+	}
+
+	public void setFilterFactory(PcmFilterFactory factory) {
+		this.isFilterApplied.set(factory != null);
+		this.audioPlayer.setFilterFactory(factory);
 	}
 }
