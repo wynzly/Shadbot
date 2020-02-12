@@ -1,29 +1,31 @@
 package com.shadorc.shadbot.db.stats.bean;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.shadorc.shadbot.db.Bean;
 
 import java.util.Map;
 
-public class DailyCommandStatsBean implements StatsBean {
+public class DailyGameStatsBean implements StatsBean {
 
     @JsonProperty("_id")
     private String id;
-    @JsonProperty("command_stats")
-    private Map<String, Integer> commandStats;
+    @JsonProperty("game_stats")
+    private Map<String, GameStatsBean> gameStats;
 
     public String getId() {
         return this.id;
     }
 
-    public Map<String, Integer> getCommandStats() {
-        return this.commandStats;
+    public Map<String, GameStatsBean> getGameStats() {
+        return this.gameStats;
     }
 
     @Override
     public String toString() {
-        return "DailyCommandStatsBean{" +
+        return "DailyGameStatsBean{" +
                 "id='" + this.id + '\'' +
-                ", commandStats=" + this.commandStats +
+                ", gameStats=" + this.gameStats +
                 '}';
     }
+
 }
